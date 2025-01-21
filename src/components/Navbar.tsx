@@ -5,7 +5,6 @@ import MobileMenu from "./MobileMenu";
 import { ModeToggle } from "./ThemeSwitch";
 import { Button } from "./ui/button";
 import { auth, signOut } from "@/lib/auth";
-import { DropdownMenus } from "./DropdownMenu";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 

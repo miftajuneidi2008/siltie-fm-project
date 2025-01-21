@@ -15,14 +15,16 @@ export const DropdownMenus = ({
   image,
 }: {
   name: string;
-  image: string | ;
+  image: string 
 }) => {
+   const firstInitial = name[0].charAt(0).toUpperCase();
+   const lastInitial = name[name.length - 1].charAt(0).toUpperCase();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
           <AvatarImage src={image} alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarFallback>{`${firstInitial}${lastInitial}`}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

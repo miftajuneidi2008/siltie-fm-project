@@ -17,7 +17,7 @@ const MobileMenu = () => {
           <X
             className="cursor-pointer"
             size={30}
-            onClick={() => setOpen((prev) => false)}
+            onClick={() => setOpen((prev) => !prev)}
           />
         ) : (
           <Menu
