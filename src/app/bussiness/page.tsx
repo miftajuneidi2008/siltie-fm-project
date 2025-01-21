@@ -20,7 +20,7 @@ const BussinessPage = () => {
                   width={400}
                   height={400}
                   alt="Images"
-                  className="h-64 w-[300px] object-cover"
+                  className="h-64 w-[300px] object-cover max-sm:hidden"
                 />
                 <div className="flex flex-col gap-2">
                   <p className="max-w-sm font-semibold">

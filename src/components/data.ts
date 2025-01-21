@@ -5,6 +5,7 @@ import pr4 from '@/assets/images/pr4.png'
 import pr5 from '@/assets/images/pr5.png'
 import pr6 from '@/assets/images/pr6.png'
 import pr8 from '@/assets/images/pr8.png'
+
 export const programmes = [
     {name:'Techonology',image:pr1},
     {name:'Science',image:pr2},
@@ -20,17 +21,21 @@ export const sideBar = [
   {
     name: "Home",
     to: "/admin",
+    icons: "House",
   },
   {
     name: "Post",
     to: "/admin/post",
+    icons: "Newspaper",
   },
   {
     name: "Programmes",
     to: "/admin/program",
+    icons: "AlignEndHorizontal",
   },
   {
     name: "Categories",
     to: "/admin/categories",
+    icons: "Clapperboard",
   },
 ];

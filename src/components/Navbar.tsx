@@ -1,10 +1,17 @@
 import Link from "next/link";
 import React from "react";
 import { CircleUserRound } from "lucide-react";
-import ThemeSwitch from "./ThemeSwitch";
 import MobileMenu from "./MobileMenu";
+import { ModeToggle } from "./ThemeSwitch";
+import { Button } from "./ui/button";
+import { auth, signOut } from "@/lib/auth";
+import { DropdownMenus } from "./DropdownMenu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-const Navbar = () => {
+const Navbar = async() => {
+  const user = await auth()
+
   return (
     <header className="sticky top-0 z-50 h-20 w-full border-b-2 bg-slate-100 py-6 dark:bg-black dark:text-white">
       <nav className="mx-auto max-w-[1300px]">
@@ -50,27 +57,63 @@ const Navbar = () => {
                 Culture
               </Link>
               <Link
-                href={`/`}
+                href={`/live`}
                 className="border-black transition-all duration-500 ease-in-out hover:border-b-2"
               >
                 Live
               </Link>
             </div>
           </div>
-          <div className="flex w-1/4 items-center justify-center gap-1">
+          <div className="flex w-1/4 items-center justify-center gap-2">
             <div>
-              <ThemeSwitch />
+              <ModeToggle />
             </div>
             <div className="group relative">
-              <CircleUserRound size={30} className="cursor-pointer" />
-              <div className="absolute top-7 hidden w-24 flex-col bg-slate-50 px-4 shadow-lg group-hover:flex dark:text-black">
-                <Link href={``} className="py-2 hover:text-sky-500">
-                  Login
-                </Link>
-                <Link href={``} className="hover:text-sky-500">
-                  Sign Up
-                </Link>
-              </div>
+              {!user?.user ? (
+                <Button className=" bg-blue-600 hover:bg-blue-900" asChild>
+                  <Link
+                    href="/login"
+                    className="flex items-center justify-center gap-1"
+                  >
+                    <CircleUserRound size={30} className="cursor-pointer" />{" "}
+                    Login
+                  </Link>
+                </Button>
+              ) : (
+                <DropdownMenu>
+                  <DropdownMenuTrigger>
+                    <Avatar>
+                      <AvatarImage
+                        src={
+                          user.user.image || "https://github.com/shadcn.png"
+                        }
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem className="cursor-pointer">Profile</DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <form
+                        action={async () => {
+                          "use server";
+
+                          await signOut();
+                        }}
+                      >
+                        <Button
+                          variant="outline"
+                          className="border-none py-0 pl-0 shadow-none"
+                        >
+                          Logout
+                        </Button>
+                      </form>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              )}
             </div>
           </div>
         </div>

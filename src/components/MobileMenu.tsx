@@ -1,8 +1,8 @@
 "use client";
-import { Menu } from "lucide-react";
+import { Menu,X } from "lucide-react";
 import React, { useState } from "react";
-import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
+import { ModeToggle } from "./ThemeSwitch";
 
 const MobileMenu = () => {
   const [open, setOpen] = useState(false);
@@ -12,12 +12,20 @@ const MobileMenu = () => {
         Siltie Fm
       </Link>
       <div className="mr-1 flex items-center gap-2">
-        <ThemeSwitch />
-        <Menu
-          className="cursor-pointer"
-          size={30}
-          onClick={() => setOpen((prev) => !prev)}
-        />
+        <ModeToggle />
+        {open ? (
+          <X
+            className="cursor-pointer"
+            size={30}
+            onClick={() => setOpen((prev) => false)}
+          />
+        ) : (
+          <Menu
+            className="cursor-pointer"
+            size={30}
+            onClick={() => setOpen((prev) => !prev)}
+          />
+        )}
       </div>
       {open && (
         <div className="absolute right-0 top-14 flex min-h-screen w-full flex-col items-center justify-center gap-6 bg-slate-100 dark:bg-black dark:text-white">
@@ -28,37 +36,37 @@ const MobileMenu = () => {
             Home
           </Link>
           <Link
-            href={`/`}
+            href={`/news`}
             className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
           >
             News
           </Link>
           <Link
-            href={`/`}
+            href={`/bussiness`}
             className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
           >
             Bussiness
           </Link>
           <Link
-            href={`/`}
+            href={`/sport`}
             className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
           >
             Sport
           </Link>
           <Link
-            href={`/`}
+            href={`/technology`}
             className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
           >
             Tech
           </Link>
           <Link
-            href={`/`}
+            href={`/culture`}
             className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
           >
             Culture
           </Link>
           <Link
-            href={`/`}
+            href={`/live`}
             className="border-black transition-all duration-500 ease-in-out hover:border-b-2"
           >
             Live

@@ -26,6 +26,7 @@ const NewsPage = () => {
           <h1 className="font-semibold">Filter News</h1>
           <form action="">
             <select name="type" id="type">
+              <option value="siltie">All</option>
               <option value="siltie">Siltie</option>
               <option value="centeral">Centeral Ethiopia</option>
               <option value="ethiopia">Ethiopia</option>

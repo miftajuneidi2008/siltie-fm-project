@@ -24,9 +24,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${roboto.className} antialiased`}>
         <Providers>
-          <main className="flex min-h-screen flex-col">
-            <Navbar />
-            <div className="flex-1 flex-grow">{children}</div>
+          <main className="flex min-h-screen flex-col ">
+            <div className="sticky top-0 bg-white z-50">
+              <Navbar />
+            </div>
+            <div className="flex-1 flex-grow overflow-x-hidden">{children}</div>
             <Footer />
           </main>
         </Providers>
