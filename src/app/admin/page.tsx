@@ -1,3 +1,5 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BrainCog, Folder, Newspaper } from "lucide-react";
 import React from "react";
 
 const AdminPage = () => {
