@@ -3,6 +3,8 @@ import { Menu,X } from "lucide-react";
 import React, { useState } from "react";
 import Link from "next/link";
 import { ModeToggle } from "./ThemeSwitch";
+import { navData } from "@/lib/data";
+import Live from "./Live";
 
 const MobileMenu = () => {
   const [open, setOpen] = useState(false);
@@ -12,6 +14,7 @@ const MobileMenu = () => {
         Siltie Fm
       </Link>
       <div className="mr-1 flex items-center gap-2">
+        <Live />
         <ModeToggle />
         {open ? (
           <X
@@ -28,49 +31,12 @@ const MobileMenu = () => {
         )}
       </div>
       {open && (
-        <div className="absolute right-0 top-14 flex min-h-screen w-full flex-col items-center justify-center gap-6 bg-slate-100 dark:bg-black dark:text-white">
-          <Link
-            href={`/`}
-            className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
-          >
-            Home
-          </Link>
-          <Link
-            href={`/news`}
-            className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
-          >
-            News
-          </Link>
-          <Link
-            href={`/bussiness`}
-            className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
-          >
-            Bussiness
-          </Link>
-          <Link
-            href={`/sport`}
-            className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
-          >
-            Sport
-          </Link>
-          <Link
-            href={`/technology`}
-            className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
-          >
-            Tech
-          </Link>
-          <Link
-            href={`/culture`}
-            className="border-black transition-all duration-300 ease-in-out hover:border-b-2"
-          >
-            Culture
-          </Link>
-          <Link
-            href={`/live`}
-            className="border-black transition-all duration-500 ease-in-out hover:border-b-2"
-          >
-            Live
-          </Link>
+        <div className="absolute right-0 top-14 flex h-screen w-full flex-col items-center justify-center gap-6 bg-slate-100 dark:bg-black dark:text-white z-50">
+          {navData.map((links) => (
+            <Link href={links.to} key={links.name}>
+              {links.name}
+            </Link>
+          ))}
         </div>
       )}
     </div>

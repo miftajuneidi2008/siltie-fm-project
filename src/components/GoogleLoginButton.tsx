@@ -1,17 +1,23 @@
-import { signIn } from '@/lib/auth';
+"use client"
 import React from 'react'
 import { Button } from './ui/button';
+import { useFormStatus } from 'react-dom';
+import Spinner from './Spinner';
+import { cn } from '@/lib/utils';
 
-const GoogleLoginButton = () => {
+const GoogleLoginButton = ({size,name}:{size?:string,name?:string}) => {
+  const {pending}= useFormStatus()
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn("google", { redirectTo: "/" });
-      }}
-    >
-      <Button type="submit" className='w-full'>Signin with Google</Button>
-    </form>
+    <Button type="submit" className={cn("w-full py-4",size && 'w-max')} disabled={pending}>
+      {pending ? (
+        <div className="flex gap-2 items-center">
+          <Spinner />
+          <span>Processing</span>
+        </div>
+      ) : (
+        <div>{name ? name : "Signin with Google"}</div>
+      )}
+    </Button>
   );
 }
 

@@ -1,5 +1,7 @@
 "use client"
 import Container from '@/components/Container'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from "react-player";
 const streamingUrl =
@@ -16,16 +18,31 @@ const LivePage = () => {
     return <p>Loading...</p>
   }
       return (
-        <Container>
-          <div className='w-full h-[90vh] flex justify-center sm:w-[60%] md:w-[40%] lg:w-[30%]'>
-            <ReactPlayer
-              url={streamingUrl}
-              playing={false} // Set to true to auto-play
-              controls={true} // Show player controls
-              width="100%" // Width of the player
-              height="50px" // Height of the player
-              light={false} // Show a preview thumbnail
-            />
+        <Container className="h-screen">
+          <div className="w-full h-screen flex justify-center items-center">
+            <Card className="w-full sm:w-[60%] md:w-[40%] min-h-[50%]">
+              <CardHeader className="flex flex-row justify-between items-center py-4">
+                <Image
+                  src={`/siltie.jpg`}
+                  width={40}
+                  height={40}
+                  alt="Siltie Fm"
+                />
+                <CardTitle>
+                  <p>Siltie Fm Live</p>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="px-3 py-6 h-full">
+                <ReactPlayer
+                  url={streamingUrl}
+                  playing={false} // Set to true to auto-play
+                  controls={true} // Show player controls
+                  width="100%" // Width of the player
+                  height="50px" // Height of the player
+                  light={false} // Show a preview thumbnail
+                />
+              </CardContent>
+            </Card>
           </div>
         </Container>
       );

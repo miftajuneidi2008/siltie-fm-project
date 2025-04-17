@@ -1,29 +1,82 @@
-"use client";
-import { sideBar } from "@/components/data";
-import { cn } from "@/lib/utils";
+"use client"
+import {
+
+  Home,
+  Shapes,
+  Newspaper,
+  Clapperboard,
+} from "lucide-react";
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import React from "react";
 
-const Sidebar = () => {
-  const path = usePathname();
+// Menu items.
+const items = [
+  {
+    title: "ዳሽቦርድ",
+    url: "/admin",
+    icon: Home,
+  },
+  {
+    title: "ዜና ልጥፍ",
+    url: "/admin/news",
+    icon: Newspaper,
+  },
+  {
+    title: "ፕሮግራሞች",
+    url: "/admin/program",
+    icon: Clapperboard,
+  },
+  {
+    title: "ዜና መደብ",
+    url: "/admin/news-category",
+    icon: Shapes,
+  },
+
+  {
+    title: "የፕሮግራሞች ዝርዝር",
+    url: "/admin/program-category",
+    icon: Shapes,
+  },
+];
+
+export function AdminSidebar() {
+  const path = usePathname()
   return (
-    <aside className="flex flex-col  gap-6 sticky top-20">
-      {sideBar.map((side) => (
-        <div key={side.name} className="md:text-center">
-          <Link
-            href={side.to}
-            className={cn(
-              "text-[17px] hover:border-[1px]  hover:border-sky-800 px-1 md:px-8 py-2 ",
-              path === side.to && "bg-sky-800  text-white"
-            )}
-          >
-            {side.name}
-          </Link>
-        </div>
-      ))}
-    </aside>
+    <Sidebar className="top-20">
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Siltie Fm</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {items.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link
+                      href={item.url}
+                      className={cn(path === item.url && "font-bold")}
+                    >
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
   );
-};
-
-export default Sidebar;
+}

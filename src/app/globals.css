@@ -39,6 +39,14 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -65,6 +73,67 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+ 
+   
+  ol {
+    padding: 0 1rem;
+    margin: 1.25rem 1rem 1.25rem 0.4rem;
+  }
+    
+    li p {
+      margin-top: 0.25em;
+      margin-bottom: 0.25em;
+    }
+  
+  h1, 
+  h2, 
+  h3, 
+  h4, 
+  h5, 
+  h6 {
+    line-height: 1.1;
+    padding: 1rem;
+    text-wrap: pretty;
+  }
+
+  h1, 
+  h2 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  h1 { 
+    font-size: 1.4rem; 
+  }
+
+  h2 { 
+    font-size: 1.2rem; 
+  }
+
+  h3 { 
+    font-size: 1.1rem; 
+  }
+
+  h4, 
+  h5, 
+  h6 { 
+    font-size: 1rem; 
+  }
+  code {
+    background-color: var(--purple-light);
+    border-radius: 0.4rem;
+    color: var(--black);
+    font-size: 0.85rem;
+    padding: 0.25em 0.3em;
   }
 }
 
@@ -89,17 +158,11 @@ body {
   margin: 0 10px;
 }
 
-/*.slick-arrow.slick-prev,
-.slick-arrow.slick-next{
-  background: green;
+.ProseMirror ul {
+  padding: 0 1rem;
+  list-style: disc !important;
 }
-
-.slick-arrow.slick-prev:hover,
-.slick-arrow.slick-next:hover{
-  background: green;
+.ProseMirror ol {
+  padding: 0 2rem;
+  list-style: decimal !important;
 }
-.slick-arrow.slick-prev:active,
-.slick-arrow.slick-next:active{
-  background: green;
-}
-  */
